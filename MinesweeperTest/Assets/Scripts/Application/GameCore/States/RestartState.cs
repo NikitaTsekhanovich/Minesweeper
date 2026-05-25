@@ -1,30 +1,31 @@
 using Application.GameFlowControllers;
 using Domain.StateMachineBase.Properties;
+using Presentation.GameFieldViews;
+using Presentation.GameFlowView;
 
 namespace Application.GameCore.States
 {
     public class RestartState : IEnterable
     {
-        private readonly GameStateMachine _gameStateMachine;
         private readonly GameTimer _gameTimer;
-        private readonly GameStateController _gameStateController;
+        private readonly FieldView _fieldView;
+        private readonly GameStateControllerView _gameStateControllerView;
         
         public RestartState(
-            GameStateMachine gameStateMachine,
             GameTimer gameTimer,
-            GameStateController gameStateController)
+            FieldView fieldView,
+            GameStateControllerView gameStateControllerView)
         {
-            _gameStateMachine = gameStateMachine;
             _gameTimer = gameTimer;
-            _gameStateController = gameStateController;
+            _fieldView = fieldView;
+            _gameStateControllerView = gameStateControllerView;
         }
         
         public void Enter()
         {
-            _gameTimer.RestartTimer();
-            _gameStateMachine.EnterIn<ExitState>();
-            _gameStateController.SubscribeToActions();
-            _gameStateMachine.EnterIn<LoadState>();
+            _gameTimer.UpdateValue(0f);
+            _fieldView.RestartFieldView();
+            _gameStateControllerView.Restart();
         }
     }
 }

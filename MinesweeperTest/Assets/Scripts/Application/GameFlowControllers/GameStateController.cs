@@ -18,11 +18,6 @@ namespace Application.GameFlowControllers
             _field = field;
             _gameStateMachine = gameStateMachine;
             
-            SubscribeToActions();
-        }
-
-        public void SubscribeToActions()
-        {
             _field.OnFindBomb += SetLoseState;
             _field.OnClearedBombs += SetWinState;
         }

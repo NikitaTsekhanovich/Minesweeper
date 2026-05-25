@@ -34,6 +34,11 @@ namespace Presentation.GameFlowView
             }
 
             _gameStateController = null;
+            Restart();
+        }
+
+        public void Restart()
+        {
             _winWindow.SetActive(false);
             _loseWindow.SetActive(false);
             _panel.SetActive(false);

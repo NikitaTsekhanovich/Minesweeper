@@ -58,6 +58,18 @@ namespace Application.GameField
             _currentCellsToOpen = _cellsToOpen;
         }
 
+        public void RestartField()
+        {
+            _visitedPositions.Clear();
+            _currentCellsToOpen = _cellsToOpen;
+            _firstOpenCell = true;
+            
+            foreach (var cell in _cells.Values)
+            {
+                cell.RestartCell();
+            }
+        }
+
         private void OpenCell(Cell openingCell)
         {
             if (_firstOpenCell)

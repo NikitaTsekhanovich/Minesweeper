@@ -45,6 +45,14 @@ namespace Presentation.GameFieldViews
             }
         }
 
+        public void RestartCellView()
+        {
+            _bombImage.gameObject.SetActive(false);
+            _emptyCellImage.gameObject.SetActive(false);
+            _nearbyBombsText.gameObject.SetActive(false);
+            _nearbyBombsText.text = string.Empty;
+        }
+
         private void ChangeStateCheckbox(bool state)
         {
             _checkboxImage.gameObject.SetActive(state);

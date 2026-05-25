@@ -4,7 +4,6 @@ using Application.Configs;
 using Application.GameCore.States;
 using Application.GameField;
 using Application.GameFlowControllers;
-using Domain;
 using Domain.StateMachineBase;
 using Presentation.GameFieldViews;
 using Presentation.GameFlowView;
@@ -35,7 +34,7 @@ namespace Application.GameCore
                 [typeof(WaitingClickState)] = new WaitingClickState(),
                 [typeof(LoopState)] = new LoopState(gameTimer),
                 [typeof(PauseState)] = new PauseState(this),
-                [typeof(RestartState)] = new RestartState(this, gameTimer, gameStateController),
+                [typeof(RestartState)] = new RestartState(gameTimer, fieldView, gameStateControllerView),
                 [typeof(ExitState)] = new ExitState(
                     field, 
                     gameStateController,

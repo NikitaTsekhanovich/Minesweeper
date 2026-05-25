@@ -12,12 +12,13 @@ namespace Application.GameFlowControllers
         public void UpdateTimer()
         {
             _currentTime += Time.deltaTime;
-            OnTimeChanged?.Invoke(_currentTime);
+            UpdateValue(_currentTime);
         }
 
-        public void RestartTimer()
+        public void UpdateValue(float value)
         {
-            _currentTime = 0f;
+            _currentTime = value;
+            OnTimeChanged?.Invoke(_currentTime);
         }
     }
 }

@@ -50,6 +50,16 @@ namespace Presentation.GameFieldViews
             }
         }
 
+        public void RestartFieldView()
+        {
+            _field.RestartField();
+            
+            foreach (var cellView in _cellViews)
+            {
+                cellView.RestartCellView();
+            }
+        }
+
         public void Dispose()
         {
             foreach (var cellView in _cellViews)

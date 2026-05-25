@@ -73,5 +73,15 @@ namespace Application.GameField
                 OnFindNearbyBombs?.Invoke(nearbyBombs);
             }
         }
+
+        public void RestartCell()
+        {
+            _hasCheckbox = false;
+            _isOpen = false;
+            HasBomb = false;
+            NearbyBombs = 0;
+            
+            OnCheckboxChange?.Invoke(_hasCheckbox);
+        }
     }
 }
