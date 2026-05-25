@@ -4,7 +4,6 @@ using Application.Configs;
 using Application.GameCore;
 using Application.GameCore.States;
 using Domain;
-using Random = System.Random;
 
 namespace Application.GameField
 {
