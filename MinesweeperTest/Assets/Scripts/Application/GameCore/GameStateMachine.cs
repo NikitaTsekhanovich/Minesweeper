@@ -5,6 +5,7 @@ using Application.GameCore.States;
 using Application.GameField;
 using Application.GameFlowControllers;
 using Domain;
+using Domain.StateMachineBase;
 using Presentation.GameFieldViews;
 using Presentation.GameFlowView;
 

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Domain.Properties;
+using Domain.StateMachineBase.Properties;
 
-namespace Domain
+namespace Domain.StateMachineBase
 {
     public class StateMachine
     {

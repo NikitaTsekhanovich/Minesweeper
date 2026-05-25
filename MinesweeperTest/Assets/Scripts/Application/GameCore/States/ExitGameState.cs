@@ -1,6 +1,6 @@
 using Application.GameField;
 using Application.GameFlowControllers;
-using Domain.Properties;
+using Domain.StateMachineBase.Properties;
 using Presentation.GameFieldViews;
 using Presentation.GameFlowView;
 

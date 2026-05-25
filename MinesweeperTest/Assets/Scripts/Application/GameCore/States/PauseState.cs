@@ -1,5 +1,5 @@
 using System;
-using Domain.Properties;
+using Domain.StateMachineBase.Properties;
 using UnityEngine;
 
 namespace Application.GameCore.States

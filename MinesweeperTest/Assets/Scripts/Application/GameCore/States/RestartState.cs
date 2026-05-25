@@ -1,5 +1,5 @@
 using Application.GameFlowControllers;
-using Domain.Properties;
+using Domain.StateMachineBase.Properties;
 
 namespace Application.GameCore.States
 {

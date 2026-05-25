@@ -1,4 +1,4 @@
-namespace Domain.Properties
+namespace Domain.StateMachineBase.Properties
 {
     public interface ICanUpdate
     {

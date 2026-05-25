@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Application.Configs;
 using Application.GameCore;
 using Application.GameCore.States;
+using Domain;
 using Random = System.Random;
 
 namespace Application.GameField
@@ -136,21 +137,24 @@ namespace Application.GameField
 
             return nearbyBombs;
         }
-
-        // Разбить на методы
+        
         private void SpawnBombs(Cell openingCell)
         {
-            var random = new Random();
-    
-            var cells = new List<Cell>();
-            foreach (var cell in _cells.Values)
+            var cellsIds = GetCellsIds();
+            var bombCellIndexes = GetBombCellIndexes(openingCell, cellsIds);
+            PermutationShuffle.RearrangeShuffle(bombCellIndexes);
+
+            for (var i = 0; i < GameFieldConfig.AmountBombs; i++)
             {
-                cells.Add(cell);
+                cellsIds[bombCellIndexes[i]].AddBomb();
             }
-            
+        }
+
+        private int[] GetBombCellIndexes(Cell openingCell, List<Cell> cellsIds)
+        {
             var bombCellIndexes = new int[_cells.Count - 1];
             var k = 0;
-            foreach (var cell in cells)
+            foreach (var cell in cellsIds)
             {
                 if (cell.Index != openingCell.Index)
                 {
@@ -158,17 +162,19 @@ namespace Application.GameField
                     k++;
                 }
             }
-            
-            for (var i = bombCellIndexes.Length - 1; i > 0; i--)
+
+            return bombCellIndexes;
+        }
+
+        private List<Cell> GetCellsIds()
+        {
+            var cellsIds = new List<Cell>();
+            foreach (var cell in _cells.Values)
             {
-                var j = random.Next(i + 1);
-                (bombCellIndexes[i], bombCellIndexes[j]) = (bombCellIndexes[j], bombCellIndexes[i]);
+                cellsIds.Add(cell);
             }
 
-            for (var i = 0; i < GameFieldConfig.AmountBombs; i++)
-            {
-                cells[bombCellIndexes[i]].AddBomb();
-            }
+            return cellsIds;
         }
 
         private void FindBomb()
